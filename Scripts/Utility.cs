@@ -61,7 +61,7 @@ public class Utility
 
 
 
-	public struct Program
+    public struct Program
     {
         public class KeyData
         {
@@ -90,8 +90,8 @@ public class Utility
         {
             return default(T);
         }
-		
-		public static bool StringToBool(string value)
+
+        public static bool StringToBool(string value)
         {
             if (value == "T")
                 return true;
@@ -175,38 +175,38 @@ public class Utility
 
             return results.Count > 0;
         }
-		
-		/// <summary>
-		/// UI 射線檢測
-		/// </summary>
-		public static List<RaycastResult> UIRaycast(Canvas canvas, Vector2 screenPosition)
-		{
-			PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-			eventDataCurrentPosition.position = screenPosition;
-			
-			GraphicRaycaster uiRaycaster = canvas.gameObject.GetComponent<GraphicRaycaster>();
-			List<RaycastResult> results = new List<RaycastResult>();
-			uiRaycaster.Raycast(eventDataCurrentPosition, results);
-			
-			return results;
-		}
+
+        /// <summary>
+        /// UI 射線檢測
+        /// </summary>
+        public static List<RaycastResult> UIRaycast(Canvas canvas, Vector2 screenPosition)
+        {
+            PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+            eventDataCurrentPosition.position = screenPosition;
+
+            GraphicRaycaster uiRaycaster = canvas.gameObject.GetComponent<GraphicRaycaster>();
+            List<RaycastResult> results = new List<RaycastResult>();
+            uiRaycaster.Raycast(eventDataCurrentPosition, results);
+
+            return results;
+        }
     }
-	
 
 
-	public struct PlayerPrefab
-	{
-		public static bool GetBool (string tag, bool def = false)
-		{
-			return bool.Parse (PlayerPrefs.GetString (tag, def.ToString ()));
-		}
-		public static void SetBool (string tag, bool def)
-		{
-			PlayerPrefs.SetString (tag, def.ToString());
-		} 
-	}
-	
-	
+
+    public struct PlayerPrefab
+    {
+        public static bool GetBool(string tag, bool def = false)
+        {
+            return bool.Parse(PlayerPrefs.GetString(tag, def.ToString()));
+        }
+        public static void SetBool(string tag, bool def)
+        {
+            PlayerPrefs.SetString(tag, def.ToString());
+        }
+    }
+
+
 
     public struct GameObjectRelate
     {
@@ -532,39 +532,39 @@ public class Utility
             rectTrans.localRotation = Quaternion.identity;
             rectTrans.localScale = Vector3.one;
         }
-		
-		public enum FacingDirection
-		{
-			UP = 270,
-			DOWN = 90,
-			LEFT = 180,
-			RIGHT = 0
-		}
-		/// <summary>
-		/// 取得兩點 Quaternion
-		/// </summary>
-		/// <param name="startingPosition">開始位置</param>
-		/// <param name="targetPosition">目標位置</param>
-		/// <param name="facing">方向</param>
-		public static Quaternion LookAt2D(Vector2 startingPosition, Vector2 targetPosition, FacingDirection facing)
-		{
-			Vector2 direction = targetPosition - startingPosition;
-			float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-			angle -= (float)facing;
-			
-			return Quaternion.AngleAxis(angle, Vector3.forward);
-		}
-		
-		/// <summary>
-		/// 取得兩點 角度
-		/// </summary>
-		/// <param name="startingPosition">開始位置</param>
-		/// <param name="targetPosition">目標位置</param>
-		/// <param name="facing">方向</param>
-		public static Vector3 LookAt2DAngle(Vector2 startingPosition, Vector2 targetPosition, FacingDirection facing)
-		{
-			return LookAt2D(startingPosition, targetPosition, facing).eulerAngles;
-		}
+
+        public enum FacingDirection
+        {
+            UP = 270,
+            DOWN = 90,
+            LEFT = 180,
+            RIGHT = 0
+        }
+        /// <summary>
+        /// 取得兩點 Quaternion
+        /// </summary>
+        /// <param name="startingPosition">開始位置</param>
+        /// <param name="targetPosition">目標位置</param>
+        /// <param name="facing">方向</param>
+        public static Quaternion LookAt2D(Vector2 startingPosition, Vector2 targetPosition, FacingDirection facing)
+        {
+            Vector2 direction = targetPosition - startingPosition;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            angle -= (float)facing;
+
+            return Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+
+        /// <summary>
+        /// 取得兩點 角度
+        /// </summary>
+        /// <param name="startingPosition">開始位置</param>
+        /// <param name="targetPosition">目標位置</param>
+        /// <param name="facing">方向</param>
+        public static Vector3 LookAt2DAngle(Vector2 startingPosition, Vector2 targetPosition, FacingDirection facing)
+        {
+            return LookAt2D(startingPosition, targetPosition, facing).eulerAngles;
+        }
     }
 
 
@@ -631,7 +631,7 @@ public class Utility
                     _text.text = FormatRelate.TimeSpanToString(lastTime);
 
                 if (_slider != null)
-                	_slider.value = 1 - ((float)lastTime.TotalSeconds / (totalTime * 60));
+                    _slider.value = 1 - ((float)lastTime.TotalSeconds / (totalTime * 60));
             }
 
             return lastTime;
